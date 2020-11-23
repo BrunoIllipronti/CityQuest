@@ -1,0 +1,23 @@
+<resources>
+    <string name="title_activity_main_section">MainSection</string>
+    <string name="login_email">Email</string>
+    <string name="login_pw">Password</string>
+    <string name="login_signup"><u>Don\'t have an account?</u></string>
+    <string name="login_continue">Continue</string>
+    <string name="login_google">Log in with Google</string>
+    <string name="app_name">"CityQuest"</string>
+    <string name="forgot_pw"><u>Forgot your password?</u></string>
+    <string name="pw_reset">Password Reset</string>
+    <string name="pw_reset_desc">Enter your email, and we\'ll send you instructions on how to reset your password</string>
+    <string name="pw_reset_btn">Send me reset instructions</string>
+    <string name="signup_msg">Start your journey today and join the</string>
+    <string name="signup_confirmpw">Confirm Password</string>
+    <string name="login_name">Name</string>
+    <string name="signup_btn">Sign Up</string>
+    <string name="logout_btn">Log Out</string>
+    <string name="refresh">Refresh</string>
+    <string name="myaccount">My Account</string>
+    <string name="main_scan">Scan</string>
+    <string name="main_map">Open Map</string>
+    <string name="ico_quest_completed"><![CDATA[https://firebasestorage.googleapis.com/v0/b/city–quest-app.appspot.com/o/ico_quest_completed.png?alt=media&token=cc287428-2a85-4a39-b8e6-7bc29302ab10]]></string>
+</resources>

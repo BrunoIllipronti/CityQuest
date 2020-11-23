@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "634528104224",
+    "firebase_url": "https://city-quest-app.firebaseio.com",
+    "project_id": "city-quest-app",
+    "storage_bucket": "city-quest-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634528104224:android:b3bb3392efa3d6d0c4a145",
+        "android_client_info": {
+          "package_name": "com.illipronti.cityquest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "634528104224-6k07ifdj9dgqlebf73a8kf7dtbh01ois.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2BMKUjec96mQmTfawplSoiRRWcEhG2bM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "634528104224-6k07ifdj9dgqlebf73a8kf7dtbh01ois.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.illipronti.cityquest">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_city_quest"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_city_quest"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CityQuest">
+        <activity android:name=".QuestsRecyclerViewAdapter"></activity>
+        <activity android:name=".MainSection" />
+        <activity android:name=".UserForgotPassword" />
+        <activity android:name=".UserSignUp" />
+        <activity android:name=".UserLogin">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
