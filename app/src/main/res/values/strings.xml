@@ -19,5 +19,7 @@
     <string name="myaccount">My Account</string>
     <string name="main_scan">Scan</string>
     <string name="main_map">Open Map</string>
-    <string name="ico_quest_completed"><![CDATA[https://firebasestorage.googleapis.com/v0/b/city–quest-app.appspot.com/o/ico_quest_completed.png?alt=media&token=cc287428-2a85-4a39-b8e6-7bc29302ab10]]></string>
+    <string name="ico_quest_completed"><![CDATA[https://firebasestorage.googleapis.com/v0/b/city-quest-app.appspot.com/o/ico_quest_completed.png?alt=media&token=cc287428-2a85-4a39-b8e6-7bc29302ab10]]></string>
+    <string name="ico_quest_inprogress"><![CDATA[https://firebasestorage.googleapis.com/v0/b/city-quest-app.appspot.com/o/ico_quest_in_progress.png?alt=media&token=2f4562c2-2008-44bd-9557-6c51c47978c9]]></string>
+    <string name="ico_new_quest"><![CDATA[https://firebasestorage.googleapis.com/v0/b/city-quest-app.appspot.com/o/ico_new_quest.png?alt=media&token=a3f914da-e1e8-43ac-a7e3-d88a2e76d21b]]></string>
 </resources>

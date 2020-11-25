@@ -18,8 +18,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class UserManager {
 
@@ -40,7 +43,6 @@ public class UserManager {
     }
 
     public void manageUser(){
-
         db.collection("users")
                 .whereEqualTo("username", email)
                 .get()
@@ -67,20 +69,25 @@ public class UserManager {
                                 else if (USER_MANAGER_ACTION == 3 || USER_MANAGER_ACTION == 2){
                                     if( password.equals(document.get("password").toString()) || USER_MANAGER_ACTION == 2 ){
 
+                                        String firestoreUserId = document.getId();
+                                        Set completed_quests  = new HashSet((ArrayList)document.get("completed_quests"));
+                                        Set inprogress_quests = new HashSet((ArrayList)document.get("inprogress_quests"));
+
                                         SharedPreferences.Editor editor;
                                         SharedPreferences sharedPreferences = context.getSharedPreferences("user_session", 0);
                                         editor = sharedPreferences.edit();
                                         editor.putInt("isLogged",USER_STATUS_CONNECTED);
+                                        editor.putString("firestoreUserId",firestoreUserId);
                                         editor.putString("userId",email);
                                         editor.putString("userName",document.get("name").toString());
                                         editor.putInt("cqPoints", ((Long)document.get("score")).intValue() );
+                                        editor.putStringSet("completed_quests", completed_quests);
+                                        editor.putStringSet("inprogress_quests", inprogress_quests);
                                         editor.apply();
 
                                         // Authenticate to app MainSection
                                         Toast.makeText (context, "Login Successful !", Toast. LENGTH_LONG).show();
-                                        Intent intent = new Intent(context, MainSection.class);
-                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        context.startActivity(intent);
+                                        enterUserLogin();
                                     } else {
                                         Toast.makeText (context, "Password Invalid", Toast. LENGTH_LONG).show();
                                     }
@@ -94,11 +101,12 @@ public class UserManager {
                             // If no email was found - Create account (1)  // Create google account user if not found (2)
                             else if (!email_exists && USER_MANAGER_ACTION == 1 || !email_exists && USER_MANAGER_ACTION == 2){
                                 createUser();
-                                Intent intent = new Intent(context, UserLogin.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                context.startActivity(intent);
-                            }
 
+                                // After creating user Standard - Returns to UserLogin
+                                if(USER_MANAGER_ACTION == 1) enterUserLogin();
+                                // Google SigIn - After creating user for the first time, call ManageUser again to get User data and access Main Section
+                                else manageUser();
+                            }
                         }
                         // Condition if Firebase gets an error...
                         else {
@@ -109,7 +117,9 @@ public class UserManager {
                 });
     }
 
-    public void createUser(){
+    private void createUser(){
+
+        ArrayList<Integer> empty_num_array = new ArrayList<>();
 
         // Create a new user with a first, middle, and last name
         Map<String, Object> user = new HashMap<>();
@@ -118,6 +128,8 @@ public class UserManager {
         user.put("password", password);
         user.put("username", email);
         user.put("score", 0);
+        user.put("completed_quests",empty_num_array);
+        user.put("inprogress_quests",empty_num_array);
 
         // Add a new document with a generated ID
         db.collection("users")
@@ -132,9 +144,15 @@ public class UserManager {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w("BRUNO", "Error adding document", e);
-                        Toast.makeText (context, "Something wrong happened - Try it again", Toast. LENGTH_LONG).show();
+                        Log.d("BRUNO", "Something Wrong Happened: " + e);
+                        Toast.makeText (context, "Something wrong happened - Try it again", Toast.LENGTH_LONG).show();
                     }
                 });
+    }
+
+    private void enterUserLogin(){
+        Intent intent = new Intent(context, UserLogin.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(intent);
     }
 }

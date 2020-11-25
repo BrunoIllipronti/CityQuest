@@ -93,6 +93,11 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
         else if (user_status == USER_STATUS_CONNECTED){
             enterMainSection();
         }
+
+        // Load Quest List Asynchronously
+        QuestManager qm = new QuestManager(this);
+        qm.selectQuests();
+
     }
 
     @SuppressLint("NonConstantResourceId")
