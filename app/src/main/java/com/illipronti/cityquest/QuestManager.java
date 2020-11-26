@@ -2,34 +2,28 @@ package com.illipronti.cityquest;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class QuestManager {
+public class QuestManager implements Serializable {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private Set questList = new HashSet();
-
     private ArrayList arrQuestAttributes;
     private Context context;
     private String userFirebaseId;
@@ -69,6 +63,7 @@ public class QuestManager {
         });
     }
 
+    // Firebase - User In Progress Quests Update
     public void updateUserQuests(ArrayList user_inprogress_quests){
 
         Map<String, Object> userQuestsUpdate = new HashMap<>();
@@ -81,6 +76,7 @@ public class QuestManager {
         updateQuestSharedPreferences(user_inprogress_quests, 3);
     }
 
+    // Firebase - User Completed Quests Update
     public void updateUserCompletedQuests(ArrayList user_completed_quests){
 
         Map<String, Object> userQuestsUpdate = new HashMap<>();
@@ -95,7 +91,7 @@ public class QuestManager {
         updateQuestSharedPreferences(user_completed_quests, 2);
     }
 
-
+    // Shared Preferences - User Completed Quests Update (to update UI in realtime)
     private void updateQuestSharedPreferences(ArrayList temp_array, int obj_type){ // 1 Score - 2 Completed Quests - 3 In Progress Quests
 
         Set quests_update = new HashSet((ArrayList)temp_array);
@@ -118,6 +114,4 @@ public class QuestManager {
         }
         editor.apply();
     }
-
-
 }

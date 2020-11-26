@@ -26,6 +26,7 @@ import java.util.Arrays;
 
 public class MainSection extends AppCompatActivity implements View.OnClickListener  {
 
+    private final int STANDARD_REQUEST_CODE = 0;
     private final int USER_STATUS_LOGOUT = 9;
     private Button btnScan;
     private Button btnMap;
@@ -122,11 +123,18 @@ public class MainSection extends AppCompatActivity implements View.OnClickListen
                 break;
 
             case R.id.btnMap:
-                Toast.makeText(this, "Map Button Pressed.... go to map! ", Toast.LENGTH_LONG).show();
+                openMapActivity();
                 break;
         }
     }
 
+    private void openMapActivity(){
+        Intent intent = new Intent(MainSection.this, QuestsMap.class);
+        startActivityForResult(intent, STANDARD_REQUEST_CODE);
+        finish();
+    }
+
+    // QR Code - Activity Result
     @SuppressLint("ShowToast")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -185,4 +193,5 @@ public class MainSection extends AppCompatActivity implements View.OnClickListen
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
 }

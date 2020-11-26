@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.illipronti.cityquest">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -11,7 +15,9 @@
         android:roundIcon="@mipmap/ic_city_quest"
         android:supportsRtl="true"
         android:theme="@style/Theme.CityQuest">
-        <activity android:name=".QuestsRecyclerViewAdapter"></activity>
+        <activity android:name=".QuestsMap"></activity>
+        <activity android:name=".QuestsRecyclerViewAdapter"
+            tools:ignore="Instantiatable" />
         <activity android:name=".MainSection" />
         <activity android:name=".UserForgotPassword" />
         <activity android:name=".UserSignUp" />
@@ -22,12 +28,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".CaptureAct"
+        <activity
+            android:name=".CaptureAct"
             android:screenOrientation="fullSensor"
             android:stateNotNeeded="true"
-            android:windowSoftInputMode="stateAlwaysHidden">
-        </activity>
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
     </application>
 
 </manifest>

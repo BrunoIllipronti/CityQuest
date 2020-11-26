@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<item
+    android:id="@+id/layer"
+    android:icon="@drawable/ic_layer_on"
+    android:title="@string/refresh"
+    app:showAsAction="ifRoom" />
+
+<item
+    android:id="@+id/location"
+    android:icon="@drawable/ic_nav_on"
+    android:title="@string/myaccount"
+    app:showAsAction="ifRoom" />
+
+
+<item
+    android:id="@+id/appexit"
+    android:icon="@drawable/ic_exit"
+    android:title="@string/logout_btn"
+    app:showAsAction="ifRoom" />
+
+</menu>

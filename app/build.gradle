@@ -51,6 +51,11 @@ dependencies {
 
     // Zxing barcode dependency
     implementation 'com.journeyapps:zxing-android-embedded:3.4.0'
+
+    // MapBox dependency
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.4.0'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-core:3.1.0'
+
 }
 
 apply plugin: 'com.android.application'

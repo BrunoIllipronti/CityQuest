@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuestsMap"
+    android:orientation="vertical">
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/mapBtnScan"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:text="@string/main_scan"
+            app:icon="@drawable/ic_qr_code" />
+
+        <TextView
+            android:id="@+id/txtSpace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btnReturn"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|right"
+            android:text="@string/btn_return"
+            app:icon="@drawable/ic_return" />
+    </LinearLayout>
+
+
+    <com.mapbox.mapboxsdk.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:mapbox_cameraTargetLat="49.8704646"
+        app:mapbox_cameraTargetLng="-97.1338354"
+        app:mapbox_cameraZoom="10"/>
+
+</LinearLayout>
